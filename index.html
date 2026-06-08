@@ -72,17 +72,42 @@
         .btn2 { background: transparent; border: 2px solid white; color: white; }
         .btn2:hover { background: white; color: #0d47a1; }
 
-        /* GALERIA */
+        /* SEÇÕES DE GALERIA */
         .galeria {
-            padding: 100px 50px;
+            padding: 100px 50px 60px;
             text-align: center;
             background: #f4f6f9;
         }
 
+        /* Destaque para a galeria de Maio */
+        .galeria.maio {
+            background: #eef1f6;
+            padding-top: 110px; /* Espaço extra para o menu fixo ao scrollar */
+        }
+
         .galeria h2 {
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             color: #0d47a1;
             font-size: 32px;
+        }
+
+        .galeria .subtitulo {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .galeria .tag-mes {
+            background: #40c351;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
         }
 
         .fotos {
@@ -120,6 +145,7 @@
             font-size: 16px;
             color: #333;
             font-weight: 600;
+            line-height: 1.4;
         }
 
         /* MODAL (ZOOM) */
@@ -146,6 +172,8 @@
             margin-top: 20px;
             font-size: 20px;
             text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
         }
 
         .close {
@@ -230,7 +258,8 @@
     <img src="logo.png" class="logo" alt="Logo O.H.B">
     <nav>
         <a href="#">Início</a>
-        <a href="#galeria">Galeria</a>
+        <a href="#galeria-maio">Retiradas de Maio</a>
+        <a href="#galeria">Histórico</a>
         <a href="#contato">Contato</a>
     </nav>
 </header>
@@ -239,53 +268,90 @@
     <div class="hero-content">
         <h1>Peças para Maquinário Agrícola</h1>
         <p>Qualidade e confiança para o seu agronegócio</p>
-        <button class="btn1">Ver Galeria</button>
+        <button class="btn1">Ver Retiradas de Maio</button>
         <button class="btn2" onclick="location.href='#contato'">Falar com Vendedor</button>
     </div>
 </section>
 
+<!-- NOVA SEÇÃO: GALERIA DE MAIO -->
+<section class="galeria maio" id="galeria-maio">
+    <span class="tag-mes">Destaques do Mês</span>
+    <h2>Máquinas Retiradas em Maio</h2>
+    <p class="subtitulo">Confira os últimos maquinários e sinistros gerenciados pela nossa equipe neste mês</p>
+    
+    <div class="fotos">
+        
+        <!-- Item Exemplo 1 (Imagem) -->
+        <div class="galeria-item">
+            <img src="CR 9060.jpeg" class="zoom-item" data-desc="Trator retirado em Maio - Detalhes do sinistro e localização aqui">
+            <p class="desc-texto">CR 9060 - Maio/2026<br><small style="color:#666; font-weight:normal;">Localização / Causa Sinistro</small></p>
+        </div>
+
+        <!-- Item Exemplo 2 (Vídeo) -->
+       <div class="galeria-item">
+            <img src="Draper terraflex 3162 40 pes.jpeg" class="zoom-item" data-desc="Trator retirado em Maio - Detalhes do sinistro e localização aqui">
+            <p class="desc-texto">Draper terraflex 3162 40 pes - Maio/2026<br><small style="color:#666; font-weight:normal;">Localização / Causa Sinistro</small></p>
+        </div>
+
+        <!-- Item Exemplo 3 (Imagem) -->
+        <div class="galeria-item">
+            <img src="Case modelo EXTREME 2388.jpeg" class="zoom-item" data-desc="Colhedeira carregada com sucesso em Maio">
+            <p class="desc-texto">Case modelo EXTREME 2388 - Maio/2026<br><small style="color:#666; font-weight:normal;">Origem: Cidade - UF</small></p>
+        </div>
+
+         <div class="galeria-item">
+            <img src="Colhedora de cana John Deere CH570.jpeg" class="zoom-item" data-desc="Colhedeira carregada com sucesso em Maio">
+            <p class="desc-texto">Colhedora de cana John Deere CH570 - Maio/2026<br><small style="color:#666; font-weight:normal;">Origem: Cidade - UF</small></p>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALERIA GERAL / HISTÓRICO -->
 <section class="galeria" id="galeria">
-    <h2>Galeria de Máquinas Retiradas pela O.H.B</h2>
+    <h2>Histórico de Máquinas Retiradas pela O.H.B</h2>
+    <p class="subtitulo">Nossa trajetória de eficiência e segurança em transporte de grande porte</p>
+    
     <div class="fotos">
         
         <div class="galeria-item">
-            <img src="cohedeira de cana.jpeg" class="zoom-item" data-desc="Colhedeira de Cana em plena operação">
-            <p class="desc-texto">Colhedeira de Cana,sinistro: INCÊNDIO, Pompéu MG </p>
+            <img src="cohedeira de cana.jpeg" class="zoom-item" data-desc="Colhedeira de Cana, sinistro: INCÊNDIO, Pompéu - MG">
+            <p class="desc-texto">Colhedeira de Cana, sinistro: INCÊNDIO, Pompéu MG</p>
         </div>
 
         <div class="galeria-item">
-            <img src="FORRAGEIRA EM PARNAIBA MS.jpeg" class="zoom-item" data-desc="Forrageira retirada em Parnaíba - MS">
+            <img src="FORRAGEIRA EM PARNAIBA MS.jpeg" class="zoom-item" data-desc="NEW HOLLAND FR780 Forrageira em Parnaíba - MS">
             <p class="desc-texto">NEW HOLLAND FR780 Forrageira em Parnaíba MS</p>
         </div>
         
         <div class="galeria-item">
-            <video src="COLHEDEIRA MASSEY FERGUNSON.mp4" class="zoom-item" data-desc="Vídeo: Colhedeira Massey Ferguson em campo" autoplay muted loop playsinline></video>
+            <video src="COLHEDEIRA MASSEY FERGUNSON.mp4" class="zoom-item" data-desc="Colhedeira Massey Ferguson, Origem: Buritizeiro - MG, Destino: OHB Arapongas - PR" autoplay muted loop playsinline></video>
             <p class="desc-texto">Colhedeira Massey Ferguson, Origem Buritizeiro MG, Destino OHB Arapongas PR</p>
         </div>
+
         <div class="galeria-item">
-            <video src="Trator New Holland T8 385 ano 2022 .mp4" class="zoom-item" data-desc="Vídeo: Colhedeira Massey Ferguson em campo" autoplay muted loop playsinline></video>
+            <video src="Trator New Holland T8 385 ano 2022 .mp4" class="zoom-item" data-desc="Trator New Holland T8 385 ano 2022, Causa sinistro: INCÊNDIO, Local de armazenamento: Luminárias - MG" autoplay muted loop playsinline></video>
             <p class="desc-texto">Trator New Holland T8 385 ano 2022 Causa sinistro: INCÊNDIO, Local de armazenamento: Luminárias - MG</p>
         </div>
         
         <div class="galeria-item">
-            <video src="T8.mp4" class="zoom-item" data-desc="Vídeo: Colhedeira Massey Ferguson em campo" autoplay muted loop playsinline></video>
-            <p class="desc-texto">Trator New holland modelo T8,vale resaltar o uso de guindaste, para a retirada com segurança e cuidado respeitando todas as normas de segurança</p>
+            <video src="T8.mp4" class="zoom-item" data-desc="Trator New Holland modelo T8. Uso de guindaste para a retirada com segurança e cuidado, respeitando todas as normas." autoplay muted loop playsinline></video>
+            <p class="desc-texto">Trator New Holland modelo T8, vale ressaltar o uso de guindaste para a retirada com segurança e cuidado, respeitando todas as normas de segurança</p>
         </div>
 
          <div class="galeria-item">
-            <img src="Trator de Esteira.jpeg" class="zoom-item" data-desc="Colhedeira de Cana em plena operação">
-            <p class="desc-texto">Trator de Esteira, John Deere-Modelo 850J-II, ano 2023, Local de armazenamento: São Felix do Xingu /PA, Causa sinistro: INCÊNDIBH 180 
-                 </p>
+            <img src="Trator de Esteira.jpeg" class="zoom-item" data-desc="Trator de Esteira John Deere Modelo 850J-II, ano 2023, Local de armazenamento: São Félix do Xingu - PA, Causa sinistro: INCÊNDIO">
+            <p class="desc-texto">Trator de Esteira, John Deere Modelo 850J-II, ano 2023, Local de armazenamento: São Félix do Xingu/PA, Causa sinistro: INCÊNDIO</p>
         </div>
 
          <div class="galeria-item">
-            <img src="BH 180 .jpeg" class="zoom-item" data-desc="Colhedeira de Cana em plena operação">
-            <p class="desc-texto">BH180,Ano 2012, Retirar em Arapongas Pr</p>
+            <img src="BH 180 .jpeg" class="zoom-item" data-desc="Valtra BH180, Ano 2012. Retirado em Arapongas - PR">
+            <p class="desc-texto">BH180, Ano 2012, Retirar em Arapongas PR</p>
         </div>
 
         <div class="galeria-item">
-            <img src="NEW HOLLAND T7260.jpeg" class="zoom-item" data-desc="Colhedeira de Cana em plena operação">
-            <p class="desc-texto">NEW HOLLAND T7260,2021,Endereço para retirar:BURITI BRAVO MA</p>
+            <img src="NEW HOLLAND T7260.jpeg" class="zoom-item" data-desc="NEW HOLLAND T7260, Ano 2021. Endereço para retirar: Buriti Bravo - MA">
+            <p class="desc-texto">NEW HOLLAND T7260, 2021, Endereço para retirar: BURITI BRAVO MA</p>
         </div>
 
     </div>
@@ -300,7 +366,7 @@
 
         <div class="footer-section contact-info">
             <h3>Fale Conosco</h3>
-            <p><i class="fas fa-phone"></i> (43) 999214377</p>
+            <p><i class="fas fa-phone"></i> (43) 99921-4377</p>
             <a href="https://www.instagram.com/OHBAgro" target="_blank">
                 <i class="fab fa-instagram"></i> @ohbcomercial
             </a>
@@ -312,7 +378,8 @@
         <div class="footer-section">
             <h3>Links Úteis</h3>
             <a href="#">Início</a>
-            <a href="#galeria">Galeria de Fotos</a>
+            <a href="#galeria-maio">Retiradas do Mês</a>
+            <a href="#galeria">Histórico Completo</a>
             <a href="#contato">Suporte ao Cliente</a>
         </div>
     </div>
@@ -329,9 +396,9 @@
 </div>
 
 <script>
-    // Scroll suave do botão hero
+    // Scroll suave do botão hero direcionado para a seção de Maio
     document.querySelector(".btn1").addEventListener("click", function() {
-        document.getElementById("galeria").scrollIntoView();
+        document.getElementById("galeria-maio").scrollIntoView();
     });
 
     // Modal Zoom
