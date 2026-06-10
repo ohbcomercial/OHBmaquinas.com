@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquinas Agrícolas - O.H.B</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* MENU */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 25, 50, 0.95);
+            z-index: 1000;
+        }
+
+        .logo { height: 45px; }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: #40c351; }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10,25,50,0.8), rgba(10,25,50,0.8)),
+            url('fundo.avif') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content { color: white; padding: 30px; }
+        .hero h1 { font-size: 55px; margin-bottom: 10px; }
+        .hero p { margin: 20px 0; font-size: 18px; }
+
+        /* BOTÕES */
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn1 { background: #0d47a1; color: white; border: none; }
+        .btn1:hover { background: #1565c0; }
+        .btn2 { background: transparent; border: 2px solid white; color: white; }
+        .btn2:hover { background: white; color: #0d47a1; }
+
+        /* SEÇÕES DE GALERIA */
+        .galeria {
+            padding: 100px 50px 60px;
+            text-align: center;
+            background: #f4f6f9;
+        }
+
+        /* Destaque para a galeria de Maio */
+        .galeria.maio {
+            background: #eef1f6;
+            padding-top: 110px; /* Espaço extra para o menu fixo ao scrollar */
+        }
+
+        .galeria h2 {
+            margin-bottom: 10px;
+            color: #0d47a1;
+            font-size: 32px;
+        }
+
+        .galeria .subtitulo {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .galeria .tag-mes {
+            background: #40c351;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .fotos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .galeria-item {
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .galeria-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .galeria-item img, .galeria-item video {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #000;
+        }
+
+        .desc-texto {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* MODAL (ZOOM) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 75%;
+            border-radius: 10px;
+        }
+
+        #caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 20px;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px; right: 40px;
+            color: white; font-size: 50px;
+            font-weight: bold; cursor: pointer;
+        }
+
+        /* RODA PÉ */
+        footer {
+            background: #0a1932;
+            color: white;
+            padding: 80px 20px 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #40c351;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 12px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #40c351;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #888;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block !important;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128c7e;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" class="logo" alt="Logo O.H.B">
+    <nav>
+        <a href="#">Início</a>
+        <a href="#galeria-maio">Retiradas de Maio</a>
+        <a href="#galeria">Histórico</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Peças para Maquinário Agrícola</h1>
+        <p>Qualidade e confiança para o seu agronegócio</p>
+        <button class="btn1">Ver Retiradas de Maio</button>
+        <button class="btn2" onclick="location.href='#contato'">Falar com Vendedor</button>
+    </div>
+</section>
+
+<!-- NOVA SEÇÃO: GALERIA DE MAIO -->
+<section class="galeria maio" id="galeria-maio">
+    <span class="tag-mes">Destaques do Mês</span>
+    <h2>Máquinas Retiradas em Maio</h2>
+    <p class="subtitulo">Confira os últimos maquinários e sinistros gerenciados pela nossa equipe neste mês</p>
+    
+    <div class="fotos">
+        
+        <!-- Item Exemplo 1 (Imagem) -->
+        <div class="galeria-item">
+            <img src="CR 9060 editado.png" class="zoom-item" data-desc="Trator retirado em Maio - Detalhes do sinistro e localização aqui">
+            <p class="desc-texto">CR 9060 - Maio/2026<br><small style="color:#666; font-weight:normal;"></small></p>
+        </div>
+
+        <!-- Item Exemplo 2 (Vídeo) -->
+       <div class="galeria-item">
+            <img src="Draper terraflex 3162 40 pes.jpeg" class="zoom-item" data-desc="Trator retirado em Maio - Detalhes do sinistro e localização aqui">
+            <p class="desc-texto">Draper terraflex 3162 40 pes - Maio/2026<br><small style="color:#666; font-weight:normal;"></small></p>
+        </div>
+
+        <!-- Item Exemplo 3 (Imagem) -->
+        <div class="galeria-item">
+            <img src="Case modelo EXTREME 2388 editado.png" class="zoom-item" data-desc="Colhedeira carregada com sucesso em Maio">
+            <p class="desc-texto">Case modelo EXTREME 2388 - Maio/2026<br><small style="color:#666; font-weight:normal;"></small></p>
+        </div>
+
+         <div class="galeria-item">
+            <img src="Colhedora de cana John Deere CH570.jpeg" class="zoom-item" data-desc="Colhedeira carregada com sucesso em Maio">
+            <p class="desc-texto">Colhedora de cana John Deere CH570 - Maio/2026<br><small style="color:#666; font-weight:normal;"></small></p>
+        </div>
+
+        <div class="galeria-item">
+            <img src="colheitadeira nova editada.png" class="zoom-item" data-desc="Colhedeira carregada com sucesso em Maio">
+            <p class="desc-texto">colheitadeira  New Holland - Maio/2026<br><small style="color:#666; font-weight:normal;"></small></p>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALERIA GERAL / HISTÓRICO -->
+<section class="galeria" id="galeria">
+    <h2>Histórico de Máquinas Retiradas pela O.H.B</h2>
+    <p class="subtitulo">Nossa trajetória de eficiência e segurança em transporte de grande porte</p>
+    
+    <div class="fotos">
+        
+        <div class="galeria-item">
+            <img src="cohedeira de cana.jpeg" class="zoom-item" data-desc="Colhedeira de Cana, sinistro: INCÊNDIO, Pompéu - MG">
+            <p class="desc-texto">Colhedeira de Cana, sinistro: INCÊNDIO, Pompéu MG</p>
+        </div>
+
+        <div class="galeria-item">
+            <img src="FORRAGEIRA EM PARNAIBA MS.jpeg" class="zoom-item" data-desc="NEW HOLLAND FR780 Forrageira em Parnaíba - MS">
+            <p class="desc-texto">NEW HOLLAND FR780 Forrageira em Parnaíba MS</p>
+        </div>
+        
+        <div class="galeria-item">
+            <video src="COLHEDEIRA MASSEY FERGUNSON.mp4" class="zoom-item" data-desc="Colhedeira Massey Ferguson, Origem: Buritizeiro - MG, Destino: OHB Arapongas - PR" autoplay muted loop playsinline></video>
+            <p class="desc-texto">Colhedeira Massey Ferguson, Origem Buritizeiro MG, Destino OHB Arapongas PR</p>
+        </div>
+
+        <div class="galeria-item">
+            <video src="Trator New Holland T8 385 ano 2022 .mp4" class="zoom-item" data-desc="Trator New Holland T8 385 ano 2022, Causa sinistro: INCÊNDIO, Local de armazenamento: Luminárias - MG" autoplay muted loop playsinline></video>
+            <p class="desc-texto">Trator New Holland T8 385 ano 2022 Causa sinistro: INCÊNDIO, Local de armazenamento: Luminárias - MG</p>
+        </div>
+        
+        <div class="galeria-item">
+            <video src="T8.mp4" class="zoom-item" data-desc="Trator New Holland modelo T8. Uso de guindaste para a retirada com segurança e cuidado, respeitando todas as normas." autoplay muted loop playsinline></video>
+            <p class="desc-texto">Trator New Holland modelo T8, vale ressaltar o uso de guindaste para a retirada com segurança e cuidado, respeitando todas as normas de segurança</p>
+        </div>
+
+         <div class="galeria-item">
+            <img src="Trator de Esteira.jpeg" class="zoom-item" data-desc="Trator de Esteira John Deere Modelo 850J-II, ano 2023, Local de armazenamento: São Félix do Xingu - PA, Causa sinistro: INCÊNDIO">
+            <p class="desc-texto">Trator de Esteira, John Deere Modelo 850J-II, ano 2023, Local de armazenamento: São Félix do Xingu/PA, Causa sinistro: INCÊNDIO</p>
+        </div>
+
+         <div class="galeria-item">
+            <img src="BH 180 .jpeg" class="zoom-item" data-desc="Valtra BH180, Ano 2012. Retirado em Arapongas - PR">
+            <p class="desc-texto">BH180, Ano 2012, Retirar em Arapongas PR</p>
+        </div>
+
+        <div class="galeria-item">
+            <img src="NEW HOLLAND T7260.jpeg" class="zoom-item" data-desc="NEW HOLLAND T7260, Ano 2021. Endereço para retirar: Buriti Bravo - MA">
+            <p class="desc-texto">NEW HOLLAND T7260, 2021, Endereço para retirar: BURITI BRAVO MA</p>
+        </div>
+
+    </div>
+</section>
+
+<footer id="contato">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Sobre a O.H.B</h3>
+            <p>Trabalhamos com peças e maquinário agrícola/sinistros. Atuamos com transparência e qualidade para garantir que sua produção nunca pare.</p>
+        </div>
+
+        <div class="footer-section contact-info">
+            <h3>Fale Conosco</h3>
+            <p><i class="fas fa-phone"></i> (43) 99921-4377</p>
+            <a href="https://www.instagram.com/OHBAgro" target="_blank">
+                <i class="fab fa-instagram"></i> @ohbcomercial
+            </a>
+            <a href="https://wa.me/5543999214377" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+            </a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Links Úteis</h3>
+            <a href="#">Início</a>
+            <a href="#galeria-maio">Retiradas do Mês</a>
+            <a href="#galeria">Histórico Completo</a>
+            <a href="#contato">Suporte ao Cliente</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 O.H.B Máquinas Agrícolas - Todos os direitos reservados.
+    </div>
+</footer>
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <div id="modal-container" style="text-align: center;"></div>
+    <div id="caption"></div>
+</div>
+
+<script>
+    // Scroll suave do botão hero direcionado para a seção de Maio
+    document.querySelector(".btn1").addEventListener("click", function() {
+        document.getElementById("galeria-maio").scrollIntoView();
+    });
+
+    // Modal Zoom
+    const modal = document.getElementById("myModal");
+    const modalContainer = document.getElementById("modal-container");
+    const captionText = document.getElementById("caption");
+    const span = document.querySelector(".close");
+
+    document.querySelectorAll('.zoom-item').forEach(item => {
+        item.onclick = function() {
+            modal.style.display = "flex";
+            modalContainer.innerHTML = "";
+            captionText.innerHTML = this.getAttribute("data-desc");
+
+            if (this.tagName === "VIDEO") {
+                const videoClone = document.createElement('video');
+                videoClone.src = this.src;
+                videoClone.className = "modal-content";
+                videoClone.autoplay = true;
+                videoClone.loop = true;
+                videoClone.muted = true; 
+                videoClone.setAttribute('playsinline', ''); 
+                modalContainer.appendChild(videoClone);
+            } else {
+                const imgClone = document.createElement('img');
+                imgClone.src = this.src;
+                imgClone.className = "modal-content";
+                modalContainer.appendChild(imgClone);
+            }
+        }
+    });
+
+    function fecharModal() {
+        modal.style.display = "none";
+        modalContainer.innerHTML = "";
+    }
+
+    span.onclick = fecharModal;
+    window.onclick = function(event) {
+        if (event.target == modal) fecharModal();
+    }
+</script>
+
+</body>
+</html>
